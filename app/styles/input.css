@@ -1,0 +1,7 @@
+.input {
+	@apply bg-fill text-typography-strong border border-stroke-weak px-4 h-12 rounded-md;
+}
+
+.input:focus {
+	@apply outline-none;
+}

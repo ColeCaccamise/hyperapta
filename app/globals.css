@@ -2,26 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@import './styles/btn.css';
+@import './styles/input.css';
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+	--background: hsla(214, 0%, 8%, 100%);
+	--typography-strong: hsla(214, 0%, 100%, 100%);
+	--typography-weak: hsla(214, 0%, 100%, 78%);
+	--typography-muted: hsla(214, 0%, 100%, 35%);
+
+	--fill: hsla(214, 0%, 100%, 2%);
+	--fill-solid: hsla(214, 0%, 10%, 100%);
+
+	--stroke-strong: hsla(214, 0%, 100%, 60%);
+	--stroke-medium: hsla(214, 0%, 100%, 16%);
+	--stroke-weak: hsla(214, 0%, 100%, 8%);
+
+	--accent: hsla(214, 0%, 16%, 100%);
+	--accent-stroke-strong: hsla(214, 0%, 25%, 100%);
+	--accent-stroke-weak: hsla(214, 0%, 16%, 100%);
+
+	--brand: hsl(0, 0%, 100%);
+
+	--brand-secondary: hsl(0, 0%, 24%);
+	--brand-secondary-stroke-strong: hsla(0, 0%, 100%, 80%);
+	--brand-secondary-stroke-weak: hsla(0, 0%, 100%, 20%);
+	--brand-secondary-fill: hsla(0, 0%, 100%, 5%);
+
+	--success: hsl(145, 32%, 60%);
+	--success-stroke-strong: hsl(145, 32%, 36%);
+	--success-stroke-weak: hsl(145, 32%, 30%);
+	--success-fill: hsl(145, 32%, 14%);
+
+	--error: hsl(360, 75%, 65%);
+	--error-stroke-strong: hsl(360, 75%, 56%);
+	--error-stroke-weak: hsl(360, 75%, 20%);
+	--error-fill: hsl(360, 75%, 11%);
+
+	--warning: hsl(45, 73%, 47%);
+	--warning-stroke-strong: hsl(45, 73%, 56%);
+	--warning-stroke-weak: hsl(45, 73%, 40%);
+	--warning-fill: hsla(45, 93%, 43%, 0.2);
+
+	--info: hsl(214, 60%, 65%);
+	--info-stroke-strong: hsl(214, 60%, 75%);
+	--info-stroke-weak: hsl(214, 60%, 30%);
+	--info-fill: hsla(214, 60%, 43%, 0.2);
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+	color: var(--typography-weak);
+	background: var(--background);
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+a,
+button {
+	@apply transition-effect;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+	.text-balance {
+		text-wrap: balance;
+	}
+
+	.disabled {
+		@apply opacity-60 hover:opacity-60 cursor-not-allowed;
+	}
+
+	.transition-effect {
+		@apply transition-all duration-200;
+	}
 }
