@@ -15,8 +15,8 @@ export const NewSubscriberEmail: React.FC<
 		</p>
 
 		<p className='text-sm'>
-			This email was intended for <b>{process.env.TO_EMAIL}</b>. If you were not
-			expecting this email, please ignore it.
+			This email was intended for <b>{process.env.RECIPIENT_EMAIL}</b>. If you
+			were not expecting this email, please ignore it.
 		</p>
 	</div>
 );
