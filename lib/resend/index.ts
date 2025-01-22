@@ -28,15 +28,15 @@ export async function sendEmail({
 		};
 	}
 
-	try {
-		await resend.emails.send({
-			from: process.env.SENDER_EMAIL,
-			to: recipientEmail,
-			subject,
-			react: template
-		});
-	} catch (error) {
-		console.error(error);
+	const { error } = await resend.emails.send({
+		from: process.env.SENDER_EMAIL,
+		to: recipientEmail,
+		subject,
+		react: template
+	});
+
+	if (error) {
+		console.error('Error sending email', error);
 
 		return {
 			success: false,
