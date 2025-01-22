@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createOrUpdateSubscriber } from '@/lib/mailerlite';
+import { sendNewSubscriberEmail } from '@/lib/resend';
 
 export async function POST(request: Request) {
 	try {
@@ -22,8 +23,18 @@ export async function POST(request: Request) {
 			);
 		}
 
+		const { success, error } = await sendNewSubscriberEmail({
+			subscriberEmail: email
+		});
+
+		if (!success) {
+			console.error('Failed to send notification email', error);
+		}
+
 		return NextResponse.json({ success: true });
 	} catch (error) {
+		console.error(error);
+
 		return NextResponse.json(
 			{ error: 'internal server error' },
 			{ status: 500 }
