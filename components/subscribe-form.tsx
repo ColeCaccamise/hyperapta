@@ -33,7 +33,7 @@ export default function SubscribeForm() {
 
 	return (
 		<>
-			<div className='h-[280px] flex flex-col gap-4'>
+			<div className='h-[400px] md:h-[280px] flex flex-col gap-4'>
 				<span className='text-xs font-semibold uppercase tracking-widest'>
 					Hyperapta Studios
 				</span>
@@ -60,7 +60,7 @@ export default function SubscribeForm() {
 						className='flex flex-col gap-2'
 						onSubmit={handleSubmit}
 					>
-						<div className='flex gap-2 w-full'>
+						<div className='flex gap-2 w-full flex-col md:flex-row'>
 							<Input
 								className='w-full'
 								type='email'
@@ -71,17 +71,26 @@ export default function SubscribeForm() {
 							<Button
 								type='submit'
 								disabled={!email || isLoading}
+								className='w-full md:w-auto'
 							>
 								{isLoading ? 'Subscribing...' : 'Subscribe'}
 							</Button>
 						</div>
-						<p className='text-sm text-typography-weak'>No spam, we promise.</p>
+						<p className='text-sm text-typography-weak'>
+							We&apos;ll update you when there&apos;s more to share—no spam, we
+							promise.
+						</p>
 						{error && <p className='text-error'>{error}</p>}
 					</form>
 				)}
 
 				{!subscribed && !showForm && (
-					<Button onClick={() => setShowForm(true)}>Keep me updated</Button>
+					<Button
+						className='w-full'
+						onClick={() => setShowForm(true)}
+					>
+						Keep me updated
+					</Button>
 				)}
 			</div>
 		</>
